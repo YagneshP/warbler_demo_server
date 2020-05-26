@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "install-client": "npm install --prefix warbler-client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix warbler-client && npm run build --prefix warbler-client"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
