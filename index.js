@@ -8,6 +8,7 @@ const authRoutes = require("./routes/auth");
 const db = require("./models");
 const messagesRoutes = require("./routes/messages");
 const { loginRequired, ensureCorrectUser } = require("./middleware/auth");
+const path = require("path");
 
 
 
@@ -40,6 +41,14 @@ app.use(function (req, res, next) {
 });
 
 app.use(errorHandler);
+
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("/warbler-client/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "warbler-client", "build", "index.html"));
+    });
+}
 app.listen(PORT, function () {
     console.log(`Server is startin on PORT ${PORT}`);
 })
